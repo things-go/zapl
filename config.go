@@ -51,22 +51,7 @@ type Option func(c *Config)
 
 // WithConfig with config
 func WithConfig(cfg Config) Option {
-	return func(c *Config) {
-		c.Level = cfg.Level
-		c.Format = cfg.Format
-		c.EncodeLevel = cfg.EncodeLevel
-		c.Adapter = cfg.Adapter
-		c.Stack = cfg.Stack
-		c.Path = cfg.Path
-		c.Writer = cfg.Writer
-		c.EncoderConfig = cfg.EncoderConfig
-		c.Filename = cfg.Filename
-		c.MaxSize = cfg.MaxSize
-		c.MaxAge = cfg.MaxAge
-		c.MaxBackups = cfg.MaxBackups
-		c.LocalTime = cfg.LocalTime
-		c.Compress = cfg.Compress
-	}
+	return func(c *Config) { *c = cfg }
 }
 
 // WithLevel with level

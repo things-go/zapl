@@ -16,7 +16,6 @@ func New(opts ...Option) *zap.Logger {
 	for _, opt := range opts {
 		opt(c)
 	}
-
 	var options []zap.Option
 
 	if c.Stack {
