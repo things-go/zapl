@@ -1,32 +1,14 @@
-# CD/CD go template
-CD/CD go template and test useful or not 
+# zapl zap logger with lumberjack
 
-[![GoDoc](https://godoc.org/github.com/things-labs/cicd-go-template?status.svg)](https://godoc.org/github.com/things-labs/cicd-go-template)
-[![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/github.com/things-labs/cicd-go-template?tab=doc)
-[![codecov](https://codecov.io/gh/things-labs/cicd-go-template/branch/main/graph/badge.svg)](https://codecov.io/gh/things-labs/cicd-go-template)
-[![Tests](https://github.com/things-labs/cicd-go-template/actions/workflows/ci.yml/badge.svg)](https://github.com/things-labs/cicd-go-template/actions/workflows/ci.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/things-labs/cicd-go-template)](https://goreportcard.com/report/github.com/things-labs/cicd-go-template)
-[![Licence](https://img.shields.io/github/license/things-labs/cicd-go-template)](https://raw.githubusercontent.com/things-labs/cicd-go-template/main/LICENSE)
-[![Tag](https://img.shields.io/github/v/tag/things-labs/cicd-go-template)](https://github.com/things-labs/cicd-go-template/tags)
+[![GoDoc](https://godoc.org/github.com/things-go/zapl?status.svg)](https://godoc.org/github.com/things-go/zapl)
+[![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/github.com/things-go/zapl?tab=doc)
+[![codecov](https://codecov.io/gh/things-go/zapl/branch/main/graph/badge.svg)](https://codecov.io/gh/things-go/zapl)
+[![Tests](https://github.com/things-go/zapl/actions/workflows/ci.yml/badge.svg)](https://github.com/things-go/zapl/actions/workflows/ci.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/things-go/zapl)](https://goreportcard.com/report/github.com/things-go/zapl)
+[![Licence](https://img.shields.io/github/license/things-go/zapl)](https://raw.githubusercontent.com/things-go/zapl/main/LICENSE)
+[![Tag](https://img.shields.io/github/v/tag/things-go/zapl)](https://github.com/things-go/zapl/tags)
 
-This is template that help you to quick implement some library using Go.
-
-This repository is contains following.
-
-- CI/CD
-    - golangci-lint
-    - go test
-    - CodeQL Analysis (Go)
-    - dependabot for github-actions and Go
-
-## How to use
-1. action Use this template and then create a repository
-2. replace "things-labs" to your self username using sed(or others)
-3. run make init 
-4: done
-   
 ## Features
-
 
 ## Usage
 
@@ -34,19 +16,32 @@ This repository is contains following.
 
 Use go get.
 ```bash
-    go get github.com/things-go/cicd-go-template
+    go get github.com/things-go/zapl
 ```
 
 Then import the package into your own code.
 ```bash
-    import "github.com/things-go/cicd-go-template"
+    import "github.com/things-go/zapl"
 ```
 
 ### Example
 
-[embedmd]:# (_examples/main.go go)
+[embedmd]:# (_example/main.go go)
 ```go
+package main
 
+import (
+	"go.uber.org/zap"
+
+	"github.com/things-go/zapl"
+)
+
+func main() {
+	l := zapl.New(zapl.WithLevel("debug"))
+	zapl.ReplaceGlobals(l.Sugar().With(zap.String("main", "debug")))
+
+	zapl.Debug("hello")
+}
 ```
 
 ## References
